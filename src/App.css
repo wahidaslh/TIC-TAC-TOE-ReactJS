@@ -1,9 +1,31 @@
+@import url('./variables.css');
+
+
 *{
   box-sizing: border-box;
 }
 
 body{
   margin: 0;
-  background-color: #f4f4f4;
   font-family: "Fredoka",sans-serif;
+}
+
+.App{
+  background-color: var(--bgcolor);
+  height: 100vh;
+  overflow: hidden;
+}
+
+.switch{
+  display: flex;
+  flex-direction: column;
+  width: 100vw;
+  height: 100px;
+  justify-content: center;
+  align-items: center;
+}
+
+#labelHAHA{
+  font-size: 125%;
+  color: var(--labelcolor);
 }

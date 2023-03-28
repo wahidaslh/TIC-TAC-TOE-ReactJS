@@ -1,7 +1,10 @@
+@import url('../variables.css');
+
+
 .resetButton{
     border: none;
     border-radius: 0.5rem;
-    background-color: #FFC300;
+    background-color: var(--reset-button-bgcolor);
     color: white;
     font-size: 2rem;
     padding: 0.5rem 1rem;

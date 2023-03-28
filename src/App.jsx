@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { createContext } from 'react'
 import { useState } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
@@ -7,7 +7,8 @@ import {Box} from "./components/box"
 import {Board} from "./components/board"
 import { ScoreBoard } from './components/scoreBoard'
 import { ResetButton } from './components/resetButton'
-
+import ReactSwitch from 'react-switch'
+export const ThemeContext = createContext(null);
 function App() {
 
 
@@ -63,12 +64,24 @@ function App() {
     setBoard(Array(9).fill(null));
   }
 
+  const [theme,setTheme] = useState("light");
+
+  const toggleTheme = () => {
+    setTheme((curr) => (curr === "light" ? "dark" : "light"))
+  }
   return (
-    <div className="App">
+    <ThemeContext.Provider value={{theme, toggleTheme}}>
+    <div className="App" id={theme}>
       <ScoreBoard scores ={scores} xPlaying={xPlaying}/>
       <Board board={board} onClick={gameOver ? resetBoard : handleBoxClick}/>
       <ResetButton resetBoard={resetBoard} />
+      <div className="switch">
+      <ReactSwitch onChange={toggleTheme} checked={theme === "dark"}/>
+      <br/>
+      <label id='labelHAHA'>{theme==="light" ? "Light mode" : "Dark mode"}</label>
+      </div>
     </div>
+    </ThemeContext.Provider>
   )
 }
 
